@@ -1,0 +1,17 @@
+{
+  "name": "woneighty-faces-hardware",
+  "version": "0.0.1",
+  "private":"true",
+  "description": "Hardware interaction experiments and module.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jefferson Wu <jefferson.wu@180la.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express":"latest",
+    "colors":"latest",
+    "socket.io":"latest"
+  }
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <title>SocketIO</title>
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1></h1>
+<div class="messages"></div>
+<form action="javascript:void(0)">
+    <label for="message">&gt;</label>
+    <input type="text" id="message" required autofocus autocomplete="off"/>
+</form>
+
+<!-- AUTO EXPOSED by SOCKET.IO SERVER -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
