@@ -16,3 +16,4 @@ Based off of Node Serial experiments <br>
 
 ###NOTES
 - the SIO-SERVER.JS writes messages to other users, while dropping your message in locally.
+- switching data packet to be an object vs. string.

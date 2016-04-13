@@ -20,6 +20,12 @@ app.use(express.static(__dirname + '/public'));
 var allClients = [];
 var port = process.argv[2];
 
+// ROUTES
+app.get('/debug', function(request, response){
+    response.type('text/html');
+    response.sendFile(__dirname + '/public/debug.html');
+});
+
 // SOCKET.IO
 io.on('connection', function(socket){
     allClients.push(socket);
@@ -27,22 +33,24 @@ io.on('connection', function(socket){
 
     numberOfClients(allClients);
 
-
-
     //greeting message, fired at the beginning
     socket.emit('message', 'welcome message!');
 
     // ==== SOCKET EVENTS ====
 
-    //on receiving chat message
-    socket.on('chat', function(message){
-        //broadcast to all
-        socket.broadcast.emit('message', socket.client.id + ': ' + message);
-        console.log(socket.client.id + ': ' + message);
+    //on receiving of data
+    socket.on('data', function(message){
+        var stringObject = message;
+        var dataObject = JSON.parse(stringObject);
+        console.log(socket.client.id.toString().green + ': ' + dataObject.head + ', ' + dataObject.body);
     });
+
     //on disconnect
     socket.on('disconnect', function(){
-        console.log(socket.client.id + ' disconnected');
+        console.log(socket.client.id.toString().red + ' disconnected');
+        allClients.splice(allClients.indexOf(socket.client.id), 1);
+        //console.log(allClients);
+        numberOfClients(allClients);
     });
 
     // ==== SOCKET EVENTS - END ====

@@ -3,29 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
-    <title>debug controller</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
+    <title>debug input</title>
 
     <style>
+        html, body {
+            font-family: 'Lato', sans-serif;
+        }
         h1 {
             text-align: center;
         }
     </style>
 </head>
 <body>
-<h1></h1>
+<h1>DEBUG INPUT</h1>
+
 <div class="messages"></div>
-<form action="javascript:void(0)">
-    <label for="message">&gt;</label>
-    <input type="text" id="message" required autofocus autocomplete="off"/>
-</form>
+
+<div id="controller">
+    <label for="slider1">slider1</label>
+    <input id="slider1" type="range" name="some_value" value="0" min="0" max="255">
+    <br>
+
+    <label for="slider2">slider2</label>
+    <input id="slider2" type="range" name="some_value2" value="0" min="0" max="255">
+
+    <br>
+    <label for="slider3">slider3</label>
+    <input id="slider3" type="range" name="some_value3" value="0" min="0" max="255">
+</div>
+
 
 <!-- AUTO EXPOSED by SOCKET.IO SERVER -->
 <script src="/socket.io/socket.io.js"></script>
-<!--<script src="js/main.js"></script>-->
-
+<script src="./lib/data-sender.js"></script>
 <!---->
 <script>
+    // vv======================= SLIDER CONTROL =======================vv
+    var slider1 = document.getElementById('slider1');
+    var slider2 = document.getElementById('slider2');
+    var slider3 = document.getElementById('slider3');
 
+
+    slider1.addEventListener('input', function(event){
+        var slider1data = new dataSender('slider1', this.value);
+        slider1data.send();
+    });
+
+    slider2.addEventListener('input', function(event){
+        var slider2data = new dataSender('slider2', this.value);
+        slider2data.send();
+    });
+
+    slider3.addEventListener('input', function(event){
+        var slider3data = new dataSender('slider3', this.value);
+        slider3data.send();
+    });
+    // ^^======================= SLIDER CONTROL =======================^^
+
+
+// vv======================= SOCKET.IO =======================vv
+    //connect to socket server
+    var socket = io('localhost:3000');
+
+    // socket disconnect event
+    socket.on('disconnect', function(event){
+        console.log('disconnected from server.');
+    });
+
+    // socket connect event
+    socket.on('connect', function(socket){
+        console.log('connected to server');
+    });
+
+    // socket 'message' event
+    socket.on('message', function(message){
+        console.log('message from server: ' + message);
+    });
+
+// ^^======================= SOCKET.IO ======================= ^^
 </script>
 
 </body>
