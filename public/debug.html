@@ -36,7 +36,7 @@
 
 <!-- AUTO EXPOSED by SOCKET.IO SERVER -->
 <script src="/socket.io/socket.io.js"></script>
-<script src="./lib/data-sender.js"></script>
+<script src="/lib/data-sender.js"></script>
 <!---->
 <script>
     // vv======================= SLIDER CONTROL =======================vv
@@ -64,7 +64,8 @@
 
 // vv======================= SOCKET.IO =======================vv
     //connect to socket server
-    var socket = io('localhost:3000');
+    //var socket = io('localhost:3000');    //dev server
+    var socket = io('10.90.42.123:3000');   //production pi3 server
 
     // socket disconnect event
     socket.on('disconnect', function(event){
