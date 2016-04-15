@@ -4,6 +4,7 @@ Based off of Node Serial experiments <br>
 
 ###Technologies
 - Express
+- Jade **(new)** (for socket.io namespace exploration)
 - Colors
 - [Socket.io](http://socket.io/)
 - [Serialport](https://www.npmjs.com/package/serialport)

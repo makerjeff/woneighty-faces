@@ -1,7 +1,7 @@
 /**
  * 180 Faces - Hardware Interface
  * Created by jefferson.wu on 4/11/16.
- * TODO: experimenting with socket.io namespaces
+ * Namespaced + Jade
  */
 
 // SOCKET.IO BOILERPLATE
@@ -34,7 +34,15 @@ app.get('/viewer', function(request, response){
     response.sendFile(__dirname + '/public/debug-viewer.html');
 });
 
-// SOCKET.IO
+/*SOCKET.IO NAMESPACE*/
+var namespaceString = 'love33';
+var nsp = io.of('/' + namespaceString);
+
+nsp.on('connection', function(socket){
+    console.log(socket.client.id.toString().blue + ' has connected to namespace: ' + namespaceString);
+});
+
+/*SOCKET.IO*/
 io.on('connection', function(socket){
     allClients.push(socket);
     console.log(socket.client.id.toString().blue + ' connected');
