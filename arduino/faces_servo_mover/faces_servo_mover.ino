@@ -42,6 +42,8 @@ void setup() {
   
   myservo.attach(servoPin); //attach servo to pin
   myservo.write(90);         //zero servo on startup
+
+  Serial.print("initialized! Input a value from 0-180. \r\n");
 }
 
 void loop() {
@@ -77,7 +79,7 @@ void serialInput() {
         Serial.print(value);
         Serial.print("\r\n");
         
-        myservo.write(value);
+        myservo.write((int)value);
 
       }
     }
