@@ -21,6 +21,10 @@
         }
 
         #preview-box{
+            display: flex;
+            position: relative;
+            width: 400px;
+            height: 400px;
 
         }
     </style>
@@ -51,6 +55,9 @@
     var socket = io('localhost:3000');    //dev server
     //var socket = io('10.90.42.123:3000');   //production pi3 server
 
+    var rgbHolder = {red:0, green:0, blue:0};
+    var previewBox = document.getElementById('preview-box');
+
     // socket disconnect event
     socket.on('disconnect', function(event){
         console.log('disconnected from server.');
@@ -66,7 +73,18 @@
         console.log('message from server: ' + message);
     });
 
+    socket.on('viewUpdate', function(data){
+        var dataObject = JSON.parse(data);
+        previewBox.style.backgroundColor = 'rgb(' + dataObject.red + ', ' + dataObject.green + ',' + dataObject.blue + ')';
+        console.log('receiving: ' + data);
+
+    });
+
 // ^^======================= SOCKET.IO ======================= ^^
+
+    function updateCube(data){
+
+    }
 </script>
 
 </body>
