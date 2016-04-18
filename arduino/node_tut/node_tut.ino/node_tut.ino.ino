@@ -3,7 +3,7 @@
   ================================================
   Receive and react to a serial string.
   (for 180 faces)
-  - MODIFIED FOR NODE_TUT
+  - MODIFIED FOR NODE_TUT, TODO: update faces_servo_mover when done
 
   Note:
   - nano resets when disconnected, micro keeps the connection alive.

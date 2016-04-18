@@ -1,5 +1,6 @@
 // NODE.JS > node tutorial
 //opening the serial port, send basic data
+//TODO: implement into servo controller
 
 //serial port initializations
 var serialport = require('serialport');
