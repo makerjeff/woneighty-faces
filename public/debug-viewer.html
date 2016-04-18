@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
-    <title>debug input</title>
+    <title>viewer</title>
 
     <style>
         html, body {
@@ -13,25 +13,31 @@
         h1 {
             text-align: center;
         }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #preview-box{
+            display: flex;
+            position: relative;
+            width: 400px;
+            height: 400px;
+
+        }
     </style>
 </head>
 <body>
-<h1>DEBUG INPUT</h1>
+<h1>DEBUG VIEWER</h1>
 
 <div class="messages"></div>
 
-<div id="controller">
-    <label for="slider1">slider1</label>
-    <input id="slider1" type="range" name="some_value" value="0" min="0" max="255">
-    <br>
-
-    <label for="slider2">slider2</label>
-    <input id="slider2" type="range" name="some_value2" value="0" min="0" max="255">
-
-    <br>
-    <label for="slider3">slider3</label>
-    <input id="slider3" type="range" name="some_value3" value="0" min="0" max="255">
+<div class="container">
+    <div id="preview-box"></div>
 </div>
+
 
 
 <!-- AUTO EXPOSED by SOCKET.IO SERVER -->
@@ -40,25 +46,7 @@
 <!---->
 <script>
     // vv======================= SLIDER CONTROL =======================vv
-    var slider1 = document.getElementById('slider1');
-    var slider2 = document.getElementById('slider2');
-    var slider3 = document.getElementById('slider3');
 
-
-    slider1.addEventListener('input', function(event){
-        var slider1data = new dataSender('slider1', this.value);
-        slider1data.send();
-    });
-
-    slider2.addEventListener('input', function(event){
-        var slider2data = new dataSender('slider2', this.value);
-        slider2data.send();
-    });
-
-    slider3.addEventListener('input', function(event){
-        var slider3data = new dataSender('slider3', this.value);
-        slider3data.send();
-    });
     // ^^======================= SLIDER CONTROL =======================^^
 
 
@@ -66,6 +54,9 @@
     //connect to socket server
     var socket = io('localhost:3000');    //dev server
     //var socket = io('10.90.42.123:3000');   //production pi3 server
+
+    var rgbHolder = {red:0, green:0, blue:0};
+    var previewBox = document.getElementById('preview-box');
 
     // socket disconnect event
     socket.on('disconnect', function(event){
@@ -82,7 +73,18 @@
         console.log('message from server: ' + message);
     });
 
+    socket.on('viewUpdate', function(data){
+        var dataObject = JSON.parse(data);
+        previewBox.style.backgroundColor = 'rgb(' + dataObject.red + ', ' + dataObject.green + ',' + dataObject.blue + ')';
+        console.log('receiving: ' + data);
+
+    });
+
 // ^^======================= SOCKET.IO ======================= ^^
+
+    function updateCube(data){
+
+    }
 </script>
 
 </body>

@@ -1,6 +1,6 @@
 {
   "name": "woneighty-faces-hardware",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private":"true",
   "description": "Hardware interaction experiments and module.",
   "main": "app.js",
@@ -13,6 +13,7 @@
     "express":"latest",
     "colors":"latest",
     "socket.io":"latest",
-    "serialport":"*"
+    "serialport":"*",
+    "jade":"*"
   }
 }
