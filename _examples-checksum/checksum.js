@@ -18,18 +18,20 @@ console.log(md5message);
 //     }
 // });
 
-var checker = new JeffChecker();
+var checker = new JeffChecker2();
 
-for(var i = 0; i < 10; i++){
-    checker.moreFun();
+for(var i = 0; i < 100; i++){
+    checker.moreFun(1);
+}
+
+for(i = 0; i < 100; i++){
+    checker.lessFun(1);
 }
 
 
 
 /* FUNCTIONS / OBJECTS */
-
-
-//type 1 object
+//type 1 object constructor prototype
 function JeffChecker(str){
     this.funFactor = 0;
     this.debugMessage = str;
@@ -43,17 +45,20 @@ JeffChecker.prototype.lessFun = function(val){
     console.log(this.funFactor);
 };
 
-//type 2 object
+//type 2 object constructor prototype
 function JeffChecker2(str){
     this.funFactor = 0;
+    this.debugMessage = str;
 
     //encapsulated moreFun
     this.moreFun = function(val){
         this.funFactor += val;
+        console.log(this.funFactor);
     };
 
     //encapsulated lessFun
     this.lessFun = function(val){
         this.funFactor -= val;
+        console.log(this.funFactor);
     };
 }
