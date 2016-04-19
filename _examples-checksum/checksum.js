@@ -28,22 +28,11 @@ for(i = 0; i < 100; i++){
     checker.lessFun(1);
 }
 
+checker.checksummer('checksum2.js');
+
 
 
 /* FUNCTIONS / OBJECTS */
-//type 1 object constructor prototype
-function JeffChecker(str){
-    this.funFactor = 0;
-    this.debugMessage = str;
-}
-JeffChecker.prototype.moreFun = function(val){
-    this.funFactor += val;
-    console.log(this.funFactor);
-};
-JeffChecker.prototype.lessFun = function(val){
-    this.funFactor -= val;
-    console.log(this.funFactor);
-};
 
 //type 2 object constructor prototype
 function JeffChecker2(str){
@@ -55,10 +44,20 @@ function JeffChecker2(str){
         this.funFactor += val;
         console.log(this.funFactor);
     };
-
     //encapsulated lessFun
     this.lessFun = function(val){
         this.funFactor -= val;
         console.log(this.funFactor);
+    };
+
+    //checksum
+    this.checksummer = function(file){
+        checksum.file(file, function(error, sum){
+            if(error){
+                console.log(Error(error));
+            } else {
+                console.log(sum);
+            }
+        });
     };
 }
