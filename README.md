@@ -8,6 +8,7 @@ Based off of Node Serial experiments <br>
 - Colors
 - [Socket.io](http://socket.io/)
 - [Serialport](https://www.npmjs.com/package/serialport)
+- [Node Checksum](https://www.npmjs.com/package/checksum)
 
 
 ###Tutorials Base
