@@ -3,7 +3,8 @@
  * Created by jefferson.wu on 4/11/16.
  * Namespaced + Jade
  *
- * TODO: create a new random object with local RGBholder values;
+ * TODO: create a new random object with local RGBholder values on 'connect', Destroy on 'disconnect'
+ * TODO: environmental variables.  Use them.
  */
 
 // SOCKET.IO BOILERPLATE

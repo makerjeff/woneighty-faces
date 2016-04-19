@@ -20,3 +20,4 @@ Based off of Node Serial experiments <br>
 ###NOTES
 - the SIO-SERVER.JS writes messages to other users, while dropping your message in locally.
 - switching data packet to be an object vs. string.
+- Latest version of Jade is now Pug! Rolling back to version ^1.1.0 **(NEW)**
