@@ -22,7 +22,7 @@ myPort.on('open', openPort);
 function openPort(){
     var servoVal = 10;
 
-    var keys = ['q', 'w', 'e','r','t','r','e','w']; //THIS WORKS!!! in conjunction with 'nodeTut()' on arduino side.
+    var keys = ['q', 'w', 'e','r','t']; //THIS WORKS!!! in conjunction with 'nodeTut()' on arduino side.
     var keysIndex = 0;
 
     console.log('port open');
@@ -42,9 +42,6 @@ function openPort(){
         else {
             keysIndex = 0;
         }
-
-
-
     }
     //set interval to update servo val 2x per second
     setInterval(sendData, 500);
