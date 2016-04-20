@@ -19,6 +19,23 @@ var jade = require('jade');
 var colors = require('colors');
 var rgbHolder = {red: 0, green: 0, blue: 0};
 
+//serialport related
+var serialport = require('serialport');
+var SerialPort = serialport.SerialPort;
+var portName = process.argv[3];
+var portConfig = {
+    baudRate: 9600,
+    //calls myPort.on('data') when a newline is received
+    parser: serialport.parsers.readline('\n')
+};
+
+//open the serial port
+var myPort = new SerialPort(portName, portConfig);
+
+myPort.on('open', function(){
+    console.log('serial port opened, please wait 3 seconds');
+});
+
 // MIDDLEWARE
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'jade');
@@ -39,12 +56,21 @@ app.get('/viewer', function(request, response){
 });
 
 /*SOCKET.IO NAMESPACE*/
-var namespaceString = 'love33';
+var namespaceString = 'servo';
 var nsp = io.of('/' + namespaceString);
 
 nsp.on('connection', function(socket){
     console.log(socket.client.id.toString().blue + ' has connected to namespace: ' + namespaceString);
+
+    //work that servo (has to be under the namespace)
+    socket.on('servoData', function(data){
+        console.log('Message received: ' + data);
+        myPort.write(data);
+
+    });
+
 });
+/*SOCKET.IO NAMESPACE - END */
 
 /*SOCKET.IO*/
 io.on('connection', function(socket){
@@ -109,6 +135,11 @@ function initServer(port){
     var serverPort = port || 3000;  //if no port, default to 3000
     server.listen(serverPort);
     console.log('Starting server on port ' + serverPort.rainbow);
+}
+
+function initSerialPort(){
+    console.log('port open');
+    console.log('baud rate: ' + myPort.options.baudRate);
 }
 
 /**
