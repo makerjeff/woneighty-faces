@@ -28,10 +28,11 @@
 
 
     //TODO: pass this on automatically
+    var host = '192.168.1.16:3000'
     var namespaceString = 'servo';
 
     // SOCKET.IO FUNCTIONALITY
-    var socket = io('localhost:3000' + '/' + namespaceString);
+    var socket = io(host + '/' + namespaceString);
 
     //built-in disconnect event
     socket.on('disconnect', function(){
@@ -66,9 +67,6 @@
             socket.emit('servoData', array[index]);
         });
     });
-
-
-
 
     // FORM HELPER FUNCTIONS
     function setTitle(title){
