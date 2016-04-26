@@ -4,6 +4,8 @@
  * Namespaced + Jade
  *
  * TODO: environmental variables.  Use them.
+ * TODO: Jade template
+ * TODO: Updating for universal server.
  */
 
 // SOCKET.IO BOILERPLATE
@@ -16,7 +18,6 @@ var io = require('socket.io')(server);
 
 var jade = require('jade');
 var colors = require('colors');
-var rgbHolder = {red: 0, green: 0, blue: 0};
 
 //serialport related
 var serialport = require('serialport');
@@ -42,16 +43,13 @@ app.set('view engine', 'jade');
 // GLOBALS
 var allClients = [];
 var port = process.argv[2];
+var rgbHolder = {red: 0, green: 0, blue: 0};
+
 
 // ROUTES
-app.get('/debug', function(request, response){
+app.get('/', function(request, response){
     response.type('text/html');
-    response.sendFile(__dirname + '/public/debug.html');
-});
-
-app.get('/viewer', function(request, response){
-    response.type('text/html');
-    response.sendFile(__dirname + '/public/debug-viewer.html');
+    response.sendFile(__dirname + '/public/ns-servo-tester.html');
 });
 
 /*SOCKET.IO NAMESPACE*/
@@ -65,9 +63,7 @@ nsp.on('connection', function(socket){
     socket.on('servoData', function(data){
         console.log('Message received: ' + data);
         myPort.write(data);
-
     });
-
 });
 /*SOCKET.IO NAMESPACE - END */
 
