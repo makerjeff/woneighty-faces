@@ -25,10 +25,8 @@
     var buttonDiv = document.getElementById('button-div');
     var keys = ['q', 'w', 'e','r','t'];
 
-
-
     //TODO: pass this on automatically
-    var host = '192.168.1.16:3000'
+    var host = '192.168.1.22:3000';
     var namespaceString = 'servo';
 
     // SOCKET.IO FUNCTIONALITY
@@ -51,6 +49,7 @@
 
     //create buttons with socket connections
     keys.forEach(function(elem, index, array){
+
         var btn = document.createElement('button');
         var btnText = document.createTextNode('button ' + array[index]);
         var br = document.createElement('br');
@@ -63,9 +62,9 @@
 
         btn.addEventListener('click', function(evt){
             console.log(evt.type + ' clicked ' + array[index]);
-
             socket.emit('servoData', array[index]);
         });
+
     });
 
     // FORM HELPER FUNCTIONS

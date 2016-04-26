@@ -2,6 +2,9 @@
 
 Based off of Node Serial experiments <br>
 
+###Instructions
+1. Run server with 'nodemon app.js (server port number) (serial port)' 
+
 ###Technologies
 - Express
 - Jade **(new)** (for socket.io namespace exploration)

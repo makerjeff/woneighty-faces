@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <title>NS Servo Controller</title>
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>NS Servo Controller</h1>
+
+<div id="button-div"></div>
+
+
+<!-- AUTO EXPOSED by SOCKET.IO SERVER -->
+<script src="/socket.io/socket.io.js"></script>
+<!--<script src="js/main.js"></script>-->
+<script>
+
+    var buttonDiv = document.getElementById('button-div');
+    var keys = ['q', 'w', 'e','r','t'];
+
+    //TODO: pass this on automatically
+    var host = '192.168.1.16:3000';
+    var namespaceString = 'servo';
+
+    // SOCKET.IO FUNCTIONALITY
+    var socket = io(host + '/' + namespaceString);
+
+    //built-in disconnect event
+    socket.on('disconnect', function(){
+        setTitle("Disconnected");
+    });
+
+    //built-in connection event
+    socket.on('connect', function(socket){
+        setTitle("Servo Controller Connected!");
+    });
+
+    //custom message event
+    socket.on('message', function(message){
+        printMessage(message);
+    });
+
+    //create buttons with socket connections
+    keys.forEach(function(elem, index, array){
+
+        var btn = document.createElement('button');
+        var btnText = document.createTextNode('button ' + array[index]);
+        var br = document.createElement('br');
+
+        btn.appendChild(btnText);
+        buttonDiv.appendChild(btn);
+        buttonDiv.appendChild(br);
+
+        console.log('created button: ' + elem);
+
+        btn.addEventListener('click', function(evt){
+            console.log(evt.type + ' clicked ' + array[index]);
+            socket.emit('servoData', array[index]);
+        });
+
+    });
+
+    // FORM HELPER FUNCTIONS
+    function setTitle(title){
+        document.querySelector('h1').innerHTML = title;
+    }
+
+    /**
+     * Print Message
+     * Append messages to a certain div without having to store into an array.
+     * @param message String: Message to Print
+     */
+    function printMessage(message){
+        var p = document.createElement('p');
+        p.innerText = message;
+        document.querySelector('div.messages').appendChild(p);
+    }
+
+</script>
+
+</body>
+</html>

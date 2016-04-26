@@ -6,7 +6,7 @@
 /**
  * Sends object to the backend via socket messages.
  * @param head Head of the object; Identifier.
- * @param body Body of the object; Data value or values to send.
+ * @param body Body of the object; Data value or values to send as an object.
  */
 var dataSender = function(head, body){
     this.dataObject = {head: head, body:body};
