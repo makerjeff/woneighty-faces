@@ -4,6 +4,7 @@
   Receive and react to a serial string.
   (for 180 faces)
   - MERGED FROM node_tut.ino. 2016.APR.20
+  - adding LED tester for Pi
 
   Note:
   - nano resets when disconnected, micro keeps the connection alive.
@@ -64,6 +65,12 @@ void evaluateSerial() {
     }
     if (input == 't') {
       myservo.write(180);
+    }
+    if (input == 'a') {
+      digitalWrite(ledPin, HIGH);
+    }
+    if (input == 's') {
+      digitalWrite(ledPin, LOW);
     }
   }
 }

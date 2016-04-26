@@ -3,9 +3,8 @@
  * Created by jefferson.wu on 4/11/16.
  * Namespaced + Jade
  *
- * TODO: environmental variables.  Use them.
  * TODO: Jade template
- * TODO: Updating for universal server.
+ * TODO: Fix Arduino connection on Pi.
  */
 
 // SOCKET.IO BOILERPLATE
