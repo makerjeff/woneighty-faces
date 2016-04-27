@@ -4,7 +4,7 @@
  * Namespaced + Jade
  *
  * TODO: Jade template
- * TODO: Fix Arduino connection on Pi.
+ * TODO: clean up argument grabs
  */
 
 // SOCKET.IO BOILERPLATE
@@ -39,6 +39,11 @@ myPort.on('open', function(){
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/templates');
 app.set('view engine', 'jade');
+
+// app.use(function(request, response, next){
+//     response.setHeader("dummy-header","some-information");
+//     next();
+// });
 
 // GLOBALS
 var allClients = [];
