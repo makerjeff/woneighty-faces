@@ -1,8 +1,8 @@
 // NODE.JS > node tutorial
-//opening the serial port, send basic data
+//opening the serial serverPort, send basic data
 //TODO: implement into servo controller
 
-//serial port initializations
+//serial serverPort initializations
 var serialport = require('serialport');
 var colors = require('colors');
 var SerialPort = serialport.SerialPort;
@@ -13,7 +13,7 @@ var portConfig = {
     parser: serialport.parsers.readline('\n')
 };
 
-//open the serial port
+//open the serial serverPort
 var myPort = new SerialPort(portName, portConfig);
 
 myPort.on('open', openPort);
@@ -25,15 +25,15 @@ function openPort(){
     var keys = ['q', 'w', 'e','r','t']; //THIS WORKS!!! in conjunction with 'nodeTut()' on arduino side.
     var keysIndex = 0;
 
-    console.log('port open');
+    console.log('serverPort open');
     console.log('baud rate: ' + myPort.options.baudRate);
 
-    //local function for sending data, since you only send data when port is open
+    //local function for sending data, since you only send data when serverPort is open
     function sendData(){
         //convert value to ascii string before sending
         myPort.write(keys[keysIndex].toString());
 
-        console.log('Sending ' + keys[keysIndex] + ' out the serial port');
+        console.log('Sending ' + keys[keysIndex] + ' out the serial serverPort');
 
         //increment index
         if(keysIndex < keys.length-1){
