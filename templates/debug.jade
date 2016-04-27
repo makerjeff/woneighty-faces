@@ -4,7 +4,7 @@
 extends layout
 block content
 
-    h1#title #
+    h1#title
 
     div#version-info #{appName} #{version} created by #{author.name}
 
@@ -18,7 +18,7 @@ block content
         var keys = ['q', 'w', 'e', 'r', 't'];
 
         //TODO: pass this on automatically
-        var host = #{routeData.local_ip} + #{routeData.serverPort};
+        var host = document.getElementById('invisible-div') + ':3000';
         var namespaceString = 'servo';
 
         // SOCKET.IO FUNCTIONALITY
