@@ -76,7 +76,7 @@ app.get('/', function(request, response){
 });
 
 //debug route
-app.get('/', function(request, response){
+app.get('/debug', function(request, response){
     response.render('debug', appData);
 });
 
