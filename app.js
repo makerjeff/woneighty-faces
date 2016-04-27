@@ -75,6 +75,11 @@ app.get('/', function(request, response){
     response.render('index', appData);
 });
 
+//debug route
+app.get('/', function(request, response){
+    response.render('debug', appData);
+});
+
 /*SOCKET.IO NAMESPACE*/
 var namespaceString = 'servo';
 var nsp = io.of('/' + namespaceString);
