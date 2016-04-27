@@ -1,14 +1,14 @@
 // NODE.JS > index.js
-//opening the serial port
+//opening the serial serverPort
 
 var serialport = require('serialport');
 var colors = require('colors');
 var SerialPort = serialport.SerialPort;
 
-//get port from command line
+//get serverPort from command line
 var portName = process.argv[2];
 
-//read from port until a '\n' newline character
+//read from serverPort until a '\n' newline character
 var myPort = new SerialPort(portName, {
     baudRate: 9600,
     //look for return and newline at the end of each 'data packet'
@@ -25,7 +25,7 @@ myPort.on('error', showError);
 
 // == Custom Functions ==
 function showPortOpen() {
-    console.log('port open. Data rate: ' + myPort.options.baudRate);
+    console.log('serverPort open. Data rate: ' + myPort.options.baudRate);
 }
 
 function sendSerialData(data) {
@@ -33,9 +33,9 @@ function sendSerialData(data) {
 }
 
 function showPortClose() {
-    console.log('port closed.');
+    console.log('serverPort closed.');
 }
 
 function showError(error) {
-    console.log('Serial port error: ' + error);
+    console.log('Serial serverPort error: ' + error);
 }

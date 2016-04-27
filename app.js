@@ -28,11 +28,11 @@ var portConfig = {
     parser: serialport.parsers.readline('\n')
 };
 
-//open the serial port
+//open the serial serverPort
 var myPort = new SerialPort(portName, portConfig);
 
 myPort.on('open', function(){
-    console.log('serial port opened, please wait 3 seconds');
+    console.log('serial serverPort opened, please wait 3 seconds');
 });
 
 // MIDDLEWARE
@@ -41,14 +41,37 @@ app.set('view engine', 'jade');
 
 // GLOBALS
 var allClients = [];
-var port = process.argv[2];
+var serverPort = process.argv[2];
 var rgbHolder = {red: 0, green: 0, blue: 0};
+
+//pass this to the front end
+
+var appData = {
+    appName:'woneighty-faces: hardware module',
+    version: '0.0.3',
+    author: {
+        name: 'Jefferson Wu',
+        email:'jefferson.wu@180la.com'
+    },
+
+    routeData: {
+        serverPort: serverPort,
+        hardwarePort: portName,
+        local_ip:process.argv[4]
+    }
+};
+
 
 
 // ROUTES
+// app.get('/', function(request, response){
+//     response.type('text/html');
+//     response.sendFile(__dirname + '/public/ns-servo-tester.html');
+// });
+
+//default route
 app.get('/', function(request, response){
-    response.type('text/html');
-    response.sendFile(__dirname + '/public/ns-servo-tester.html');
+    response.render('index', appData);
 });
 
 /*SOCKET.IO NAMESPACE*/
@@ -120,19 +143,19 @@ io.on('connection', function(socket){
     // ==== SOCKET EVENTS - END ====
 });
 
-initServer(port);
+initServer(serverPort);
 
 // ==== HELPER FUNCTIONS ====
 //TODO: move these to /helpers
 
 function initServer(port){
-    var serverPort = port || 3000;  //if no port, default to 3000
+    var serverPort = port || 3000;  //if no serverPort, default to 3000
     server.listen(serverPort);
-    console.log('Starting server on port ' + serverPort.rainbow);
+    console.log('Starting server on serverPort ' + serverPort.rainbow);
 }
 
 function initSerialPort(){
-    console.log('port open');
+    console.log('serverPort open');
     console.log('baud rate: ' + myPort.options.baudRate);
 }
 

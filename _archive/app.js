@@ -70,9 +70,9 @@ initServer(port);
 //TODO: move these to /helpers
 
 function initServer(port){
-    var serverPort = port || 3000;  //if no port, default to 3000
+    var serverPort = port || 3000;  //if no serverPort, default to 3000
     server.listen(serverPort);
-    console.log('Starting server on port ' + serverPort.rainbow);
+    console.log('Starting server on serverPort ' + serverPort.rainbow);
 }
 
 /**

@@ -3,7 +3,9 @@
 Based off of Node Serial experiments <br>
 
 ###Instructions
-1. Run server with 'nodemon app.js (server port number) (serial port)' 
+1. Run server with 'nodemon app.js (server port number) (serial port) (network IP)' 
+
+	- example: 'nodemon app.js 3000 /dev/ttyUSB0 XX.XX.XX.XXX'
 
 ###Technologies
 - Express
