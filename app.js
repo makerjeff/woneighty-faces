@@ -37,6 +37,7 @@ myPort.on('open', function(){
 
 // MIDDLEWARE
 app.use(express.static(__dirname + '/public'));
+app.set('views', __dirname + '/templates');
 app.set('view engine', 'jade');
 
 // GLOBALS
@@ -78,6 +79,7 @@ app.get('/', function(request, response){
 var namespaceString = 'servo';
 var nsp = io.of('/' + namespaceString);
 
+//namespace
 nsp.on('connection', function(socket){
     console.log(socket.client.id.toString().blue + ' has connected to namespace: ' + namespaceString);
 
