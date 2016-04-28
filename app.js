@@ -40,11 +40,6 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/templates');
 app.set('view engine', 'jade');
 
-// app.use(function(request, response, next){
-//     response.setHeader("dummy-header","some-information");
-//     next();
-// });
-
 // GLOBALS
 var allClients = [];
 var serverPort = process.argv[2];
@@ -54,6 +49,7 @@ var rgbHolder = {red: 0, green: 0, blue: 0};
 
 var appData = {
     appName:'woneighty-faces: hardware module',
+    title:'180f-h',
     version: '0.0.3',
     author: {
         name: 'Jefferson Wu',
@@ -78,11 +74,6 @@ var appData = {
 //default route
 app.get('/', function(request, response){
     response.render('index', appData);
-});
-
-//debug route
-app.get('/debug', function(request, response){
-    response.render('debug', appData);
 });
 
 /*SOCKET.IO NAMESPACE*/
