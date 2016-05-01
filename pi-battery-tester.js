@@ -5,6 +5,8 @@
 var fs = require('fs');
 var colors = require('colors');
 
+var interval = 5000;    //interval in milliseconds
+
 
 // FUNCTIONS
 
@@ -20,6 +22,10 @@ var BatteryTester = {
     }
 };
 
-var timer = setInterval(BatteryTester.logData, 1000);
+//fire once
+BatteryTester.logData();
+
+//set interval
+var timer = setInterval(BatteryTester.logData, interval);
 
 

@@ -71,7 +71,7 @@ void setup() {
 void loop() {
 
   evaluateSerial();
-  blinky();
+  //blinky();
 
 }
 
@@ -85,6 +85,9 @@ void loop() {
 void evaluateSerial() {
   
   if (Serial.available() > 0) {
+
+//    digitalWrite(ledPin, HIGH); //turn on the led when writing
+    
     char input = Serial.read();
 
     if (input == 'q'){
@@ -166,6 +169,10 @@ void evaluateSerial() {
       Serial.write("invalid key!");
     }
   }
+
+//  else {
+//    digitalWrite(ledPin, LOW);  //turn off the led after writing
+//  }
 }
 
 /**
