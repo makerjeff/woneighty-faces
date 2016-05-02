@@ -4,9 +4,7 @@
 
 var fs = require('fs');
 var colors = require('colors');
-
 var interval = 5000;    //interval in milliseconds
-
 
 // FUNCTIONS
 
