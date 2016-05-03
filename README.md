@@ -38,3 +38,6 @@ Based off of Node Serial experiments <br>
     - Serial.write("write my string"); Sends the proper symbols for included characters.
     - Serial.write(myCharString); requires declaring a char array with terminal null char:
         - char myCharString[] = {'m','e','s','s','a','g','e', '\r', '\n', '\0'};
+- SerialMonitor's 'new line' drop down controls the SENDING of values, not display.
+- Serial.write(inByte) writes out the actual character.
+- Serial.print(inByte) writes ou the ASCII character ## (char code)

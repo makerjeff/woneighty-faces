@@ -7,6 +7,8 @@ int interval2 = 100;
 bool led1State = false;
 bool led2State = false;
 
+int inByte = 0;
+
 void setup() {
     // put your setup code here, to run once:
     pinMode(RXLED, OUTPUT);
@@ -32,16 +34,36 @@ void loop() {
   blinky();
 
   while (Serial.available() > 0) {
-    
-    int firstVal = Serial.parseInt();
-    int secondVal = Serial.parseInt();
-    int thirdVal = Serial.parseInt();
 
-    if(Serial.read() == '\n') {
-      Serial.print(firstVal);
+    //inByte = Serial.read(); //this is grabbing the first char
+
+    int val1 = Serial.parseInt();
+    int val2 = Serial.parseInt();
+    int val3 = Serial.parseInt();
+
+//      Serial.print(inByte); //prints the ASCII
+//      Serial.print("\r\n");
+
+//      USE THIS:
+//      Serial.write(inByte); // individually prints out each value, not ASCII.
+//      Serial.write("\r\n");
+
+    if(val1 > 255 || val2 > 255 || val3 > 255) {
+      Serial.print("values too high! try again \r\n");
+    } 
+
+    //';' = 59
+    else if(Serial.read() == ';') {
+      Serial.print(val1);
+      Serial.print(", ");
+      Serial.print(val2);
+      Serial.print(", ");
+      Serial.print(val3);
+      Serial.print(". ");
+      Serial.print("\r\n");
     }
   }
-
+    
 }
 
 // ===== FUNCTIONS =====
