@@ -41,3 +41,4 @@ Based off of Node Serial experiments <br>
 - SerialMonitor's 'new line' drop down controls the SENDING of values, not display.
 - Serial.write(inByte) writes out the actual character.
 - Serial.print(inByte) writes ou the ASCII character ## (char code)
+- **Serial.SetTimeout() DO NOT USE for direct connection through terminal!  Times out before you can finish inputting the values.**
