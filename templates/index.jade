@@ -4,8 +4,85 @@
 extends layout
 block content
 
+    h1#title
 
     div#version-info #{appName} #{version} created by #{author.name}
 
     div#all-data #{routeData.serverPort} #{routeData.hardwarePort} #{routeData.local_ip}
+
+    div#all-data-div
+        div#port-data #{routeData.serverPort}
+        div#hardware-port-data #{routeData.hardwarePort}
+        div#local_ip #{routeData.local_ip}
+        div#invisible-div #{routeData.local_ip}
+
+
+    div#button-div
+
+    script(src='/socket.io/socket.io.js')
+    //script(src='./lib/dom_helpers.js')
+    script().
+
+        var local_ip = document.getElementById('local_ip').innerHTML;
+
+        var buttonDiv = document.getElementById('button-div');
+        var keys = ['q', 'w', 'e', 'r', 't', 'a', 's'];
+
+        //TODO: pass this on automatically
+        var host = local_ip + ':3000';
+        var namespaceString = 'servo';
+
+        // SOCKET.IO FUNCTIONALITY
+        var socket = io(host + '/' + namespaceString);
+
+        //built-in disconnect event
+        socket.on('disconnect', function () {
+            setTitle("Disconnected");
+        });
+
+        //built-in connection event
+        socket.on('connect', function (socket) {
+            setTitle("Servo Controller Connected!");
+        });
+
+        //custom message event
+        socket.on('message', function (message) {
+            printMessage(message);
+        });
+
+        //create buttons with socket connections
+        keys.forEach(function (elem, index, array) {
+
+            var btn = document.createElement('button');
+            var btnText = document.createTextNode('button ' + array[index]);
+            var br = document.createElement('br');
+
+            btn.appendChild(btnText);
+            buttonDiv.appendChild(btn);
+            buttonDiv.appendChild(br);
+
+            console.log('created button: ' + elem);
+
+            btn.addEventListener('click', function (evt) {
+                console.log(evt.type + ' clicked ' + array[index]);
+                socket.emit('servoData', array[index]);
+            });
+
+        });
+
+        // FORM HELPER FUNCTIONS
+        function setTitle(title) {
+            document.querySelector('h1').innerHTML = title;
+        }
+
+        /**
+         * Print Message
+         * Append messages to a certain div without having to store into an array.
+         * @param message String: Message to Print
+         */
+        function printMessage(message) {
+            var p = document.createElement('p');
+            p.innerText = message;
+            document.querySelector('div.messages').appendChild(p);
+        }
 

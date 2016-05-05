@@ -28,3 +28,21 @@ Based off of Node Serial experiments <br>
 - switching data packet to be an object vs. string.
 - Latest version of Jade is now Pug! Rolling back to version ^1.1.0 **(NEW)**
 - The Arduino is on port **/dev/ttyUSB0** and not **/dev/ttyAMA0** !
+
+
+###Arduino Notes
+- 9G Microservo draws 0.250a 0.600a of current at 5v.
+- Serial.write() artificially slows down servo position updating.
+- Writing to serial:
+    - Serial.write(48); ASCII 48 = SYMBOL 0.
+    - Serial.write("write my string"); Sends the proper symbols for included characters.
+    - Serial.write(myCharString); requires declaring a char array with terminal null char:
+        - char myCharString[] = {'m','e','s','s','a','g','e', '\r', '\n', '\0'};
+- SerialMonitor's 'new line' drop down controls the SENDING of values, not display.
+- Serial.write(inByte) writes out the actual character.
+- Serial.print(inByte) writes ou the ASCII character ## (char code)
+- **Serial.SetTimeout() DO NOT USE for direct connection through terminal!  Times out before you can finish inputting the values.**
+
+###Node Serial Notes
+- Send data as a string. With this current iteration, the Arduino code parses a single value and looks for a ';' terminator.
+- Disable the on 'data' event listener, otherwise it'll FOREVER loop.

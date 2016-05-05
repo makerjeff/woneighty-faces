@@ -4,7 +4,7 @@
  * Namespaced + Jade
  *
  * TODO: Jade template
- * TODO: Fix Arduino connection on Pi.
+ * TODO: clean up argument grabs
  */
 
 // SOCKET.IO BOILERPLATE
@@ -37,6 +37,7 @@ myPort.on('open', function(){
 
 // MIDDLEWARE
 app.use(express.static(__dirname + '/public'));
+app.set('views', __dirname + '/templates');
 app.set('view engine', 'jade');
 
 // GLOBALS
@@ -48,6 +49,7 @@ var rgbHolder = {red: 0, green: 0, blue: 0};
 
 var appData = {
     appName:'woneighty-faces: hardware module',
+    title:'180f-h',
     version: '0.0.3',
     author: {
         name: 'Jefferson Wu',
@@ -66,7 +68,7 @@ var appData = {
 // ROUTES
 // app.get('/', function(request, response){
 //     response.type('text/html');
-//     response.sendFile(__dirname + '/public/ns-servo-tester.html');
+//     response.sendFile(__dirname + '/public/ns-servo-serialSendTest.html');
 // });
 
 //default route
@@ -78,6 +80,7 @@ app.get('/', function(request, response){
 var namespaceString = 'servo';
 var nsp = io.of('/' + namespaceString);
 
+//namespace
 nsp.on('connection', function(socket){
     console.log(socket.client.id.toString().blue + ' has connected to namespace: ' + namespaceString);
 
