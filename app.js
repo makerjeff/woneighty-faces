@@ -68,7 +68,7 @@ var appData = {
 // ROUTES
 // app.get('/', function(request, response){
 //     response.type('text/html');
-//     response.sendFile(__dirname + '/public/ns-servo-tester.html');
+//     response.sendFile(__dirname + '/public/ns-servo-serialSendTest.html');
 // });
 
 //default route
