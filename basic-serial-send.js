@@ -2,6 +2,8 @@
  * Created by jeffersonwu on 5/4/16.
  */
 
+// TODO: FUNCTIONING EXAMPLE
+
 var colors = require('colors');
 var serialport = require('serialport');
 var SerialPort = serialport.SerialPort;
@@ -56,7 +58,7 @@ function serialSendTest() {
         if(error) {
             return console.log('error: '.red + error.message);
         } else {
-            console.log('sending: ' + bytesWritten + ' bytes, value: ' + value);
+            console.log('sending: '.blue + bytesWritten + ' bytes, ' + 'value: '.blue + "'" + value + "'");
         }
     });
 }
