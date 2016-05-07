@@ -24,13 +24,16 @@ Based off of Node Serial experiments <br>
 1. [NYU: ITP](https://itp.nyu.edu/physcomp/labs/labs-serial-communication/lab-serial-communication-with-node-js/)<br>
 2. [Tigoe: Serial to Browser using NODE.JS](http://www.tigoe.com/pcomp/code/arduinowiring/1096/) (doesn't work out of the box)
 3. [ITP: NYU: Node-Arduino tutorial](https://itp.nyu.edu/physcomp/labs/labs-serial-communication/lab-serial-control-of-an-arduino/)
-4. [Node 4: Buffer Objects](https://nodejs.org/dist/latest-v4.x/docs/api/buffer.html#buffer_new_buffer_str_encoding) **(NEW)**
+4. [Node 4: Buffer Objects](https://nodejs.org/dist/latest-v4.x/docs/api/buffer.html#buffer_new_buffer_str_encoding)
+5. [Building Multi-Touch Web Applications](http://blog.teamtreehouse.com/building-multi-touch-web-applications)
+6. [How to turn a raspberry pi into a wifi router](http://raspberrypihq.com/how-to-turn-a-raspberry-pi-into-a-wifi-router/)
 
 ###NOTES
 - the SIO-SERVER.JS writes messages to other users, while dropping your message in locally.
 - switching data packet to be an object vs. string.
-- Latest version of Jade is now Pug! Rolling back to version ^1.1.0 **(NEW)**
-- The Arduino is on port **/dev/ttyUSB0** and not **/dev/ttyAMA0** !
+- Latest version of Jade is now Pug! Rolling back to version ^1.1.0
+- (UPDATE) ATMEGA328 Arduinos on serial port **/dev/ttyUSB0**.
+- (UPDATE) AT32u4 Arduinos on serial port **/dev/ttyACM0**
 
 
 ###Arduino Notes
