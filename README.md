@@ -26,7 +26,8 @@ Based off of Node Serial experiments <br>
 3. [ITP: NYU: Node-Arduino tutorial](https://itp.nyu.edu/physcomp/labs/labs-serial-communication/lab-serial-control-of-an-arduino/)
 4. [Node 4: Buffer Objects](https://nodejs.org/dist/latest-v4.x/docs/api/buffer.html#buffer_new_buffer_str_encoding)
 5. [Building Multi-Touch Web Applications](http://blog.teamtreehouse.com/building-multi-touch-web-applications)
-6. [How to turn a raspberry pi into a wifi router](http://raspberrypihq.com/how-to-turn-a-raspberry-pi-into-a-wifi-router/)
+6. [How to turn a raspberry pi into a wifi router](http://raspberrypihq.com/how-to-turn-a-raspberry-pi-into-a-wifi-router/) **(deprecated)**
+7. [How to Set up a Raspberry Pi as a Wireless Access Point]
 
 ###NOTES
 - the SIO-SERVER.JS writes messages to other users, while dropping your message in locally.
