@@ -15,7 +15,7 @@ Based off of Node Serial experiments <br>
 - [Serialport](https://www.npmjs.com/package/serialport)
 - [Node Checksum](https://www.npmjs.com/package/checksum)
 - [eSpeak](http://espeak.sourceforge.net/commands.html)
-- [npm - espeak](https://www.npmjs.com/package/espeak) **(NEW!)**
+- [Execute a commandline binary with node-js](http://stackoverflow.com/questions/20643470/execute-a-command-line-binary-with-node-js)
 
 
 
@@ -35,6 +35,7 @@ Based off of Node Serial experiments <br>
 - Latest version of Jade is now Pug! Rolling back to version ^1.1.0
 - (UPDATE) ATMEGA328 Arduinos on serial port **/dev/ttyUSB0**.
 - (UPDATE) AT32u4 Arduinos on serial port **/dev/ttyACM0**
+- Use child-process to execute command line espeak.
 
 
 ###Arduino Notes
