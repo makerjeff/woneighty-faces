@@ -17,6 +17,7 @@ var io = require('socket.io')(server);
 
 var jade = require('jade');
 var colors = require('colors');
+var exec = require('child_process').exec;
 
 //serialport related
 var serialport = require('serialport');
@@ -168,7 +169,12 @@ function initSerialPort(){
  */
 function numberOfClients(allClientsArr){
     console.log('Total clients: ' + allClientsArr.length);
+    exec('espeak -s 120 -p 100 ' + allClientsArr.length + ' client connected.', function(error, stdout, stderr){});
+    //exec('say ' + allClientsArr.length + ' client connected.', function(error, stdout, stderr){});
+
+
     return allClientsArr.length;
+
 }
 
 function updateViewer(dataObject){
