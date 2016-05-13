@@ -16,6 +16,4 @@ espeak.speak('hello world', function(error, wav){
     var dataUri = wav.toDataUri();
 });
 
-espeak.speak('hello world, slower', ['-p 100', '-s 120', '-v+f4', '-w out.wav'], function(error, wav){
-    
-});
+//espeak.speak('hello world, slower', ['-p 100', '-s 120', '-v+f4', '-w out.wav'], function(error, wav){});
