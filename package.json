@@ -17,6 +17,6 @@
     "jade":"^1.11.0",
     "checksum":"latest",
     "raspivid":"latest",
-    "node-espeak":"latest"
+    "espeak":"latest"
   }
 }

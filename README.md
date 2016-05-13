@@ -15,7 +15,7 @@ Based off of Node Serial experiments <br>
 - [Serialport](https://www.npmjs.com/package/serialport)
 - [Node Checksum](https://www.npmjs.com/package/checksum)
 - [eSpeak](http://espeak.sourceforge.net/commands.html)
-- [node e-speak](https://www.npmjs.com/package/node-espeak) **compatible with only raspberry Pi**
+- [npm - espeak](https://www.npmjs.com/package/espeak) **(NEW!)**
 
 
 
