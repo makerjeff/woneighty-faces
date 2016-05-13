@@ -169,7 +169,7 @@ function initSerialPort(){
  */
 function numberOfClients(allClientsArr){
     console.log('Total clients: ' + allClientsArr.length);
-    exec('espeak -s 120 -p 100 ' + '"' + allClientsArr.length + ' client connected.' +'"' , function(error, stdout, stderr){});
+    exec('espeak -s 120 -p 100 -v+f3 ' + '"' + allClientsArr.length + ' client connected.' +'"' , function(error, stdout, stderr){});
     //exec('say ' + allClientsArr.length + ' client connected.', function(error, stdout, stderr){});
 
 
